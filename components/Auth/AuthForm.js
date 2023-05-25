@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 
 import Button from '../UI/Button';
 import Input from './Input';
@@ -44,8 +44,9 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
     }
 
     return (
+        <KeyboardAvoidingView> 
         <View style={styles.form}>
-            <View>
+            
                 <Input
                     label="Email Address"
                     onUpdateValue={updateInputValueHandler.bind(this, 'email')}
@@ -87,7 +88,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
                     </Button>
                 </View>
             </View>
-        </View>
+        </KeyboardAvoidingView >
     );
 }
 

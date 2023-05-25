@@ -1,13 +1,16 @@
-import { useState } from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
+import { useState, useRef } from 'react';
+import { Alert, StyleSheet, View, useWindowDimensions, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import FlatButton from '../UI/FlatButton';
 import AuthForm from './AuthForm';
 import { GlobalStyles } from '../../constants/styles';
+import Lottie from 'lottie-react-native'
 
 function AuthContent({ isLogin, onAuthenticate }) {
     const navigation = useNavigation();
+    const { height } = useWindowDimensions();
+    const animationRef = useRef();
 
     const [credentialsInvalid, setCredentialsInvalid] = useState({
         email: false,
@@ -53,7 +56,18 @@ function AuthContent({ isLogin, onAuthenticate }) {
     }
 
     return (
+ <KeyboardAvoidingView> 
         <View style={styles.authContent}>
+            
+            <Lottie style={[styles.logo, { height: height * 0.3, marginLeft: 20 }]}
+                ref={animationRef}
+                //style = {{flex:1}}
+                source={require('../../assets/animations/131681-add-expenses.json')}
+                loop={true}
+                autoPlay={true}
+
+            //speed = {0.5}
+            />
             <AuthForm
                 isLogin={isLogin}
                 onSubmit={submitHandler}
@@ -64,7 +78,8 @@ function AuthContent({ isLogin, onAuthenticate }) {
                     {isLogin ? 'Create a new user' : 'Log in instead'}
                 </FlatButton>
             </View>
-        </View>
+            </View>
+        </KeyboardAvoidingView>
     );
 }
 
