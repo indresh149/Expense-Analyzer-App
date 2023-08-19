@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Alert, KeyboardAvoidingView, ScrollView ,StyleSheet} from 'react-native';
+import { Alert, KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 
 import AuthContent from '../components/Auth/AuthContent';
 import LoadingOverlay from '../components/UI/LoadingOverlay';
@@ -15,8 +15,9 @@ function LoginScreen() {
     async function loginHandler({ email, password }) {
         setIsAuthenticating(true);
         try {
-            const token = await login(email, password);
+            const { token, userID } = await login(email, password);
             authCtx.authenticate(token);
+            authCtx.getUserID(userID);
         } catch (error) {
             Alert.alert(
                 'Authentication failed!',
@@ -33,7 +34,7 @@ function LoginScreen() {
     return (
         <ScrollView
             style={styles.Loginview}
-        > 
+        >
             <AuthContent isLogin onAuthenticate={loginHandler} />
         </ScrollView>
     );
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 32,
         padding: 16,
         borderRadius: 8,
-        
+
         elevation: 2,
         shadowColor: 'black',
         shadowOffset: { width: 1, height: 1 },
@@ -58,6 +59,6 @@ const styles = StyleSheet.create({
         marginTop: 8,
     },
     Loginview: {
-        marginTop:100,
+        marginTop: 100,
     },
 });

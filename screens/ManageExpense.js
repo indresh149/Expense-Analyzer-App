@@ -65,7 +65,6 @@ function ManageExpense({ route, navigation }) {
             setError('Could not save expense!- please try again later!');
             setIsSubmitting(false);
         }
-
     }
 
     function errorHandler() {

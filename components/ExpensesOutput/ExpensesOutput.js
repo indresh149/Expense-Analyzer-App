@@ -7,7 +7,7 @@ import ExpensesSummary from './ExpensesSummary';
 
 
 
-function ExpensesOutput({ expenses, expensesPeriod ,fallbackText}) {
+function ExpensesOutput({ expenses, expensesPeriod, fallbackText }) {
     let content = <Text style={styles.infoText}>{fallbackText}</Text>;
 
     if (expenses.length > 0) {
@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 24,
         paddingTop: 24,
-        paddingBottom:0,
+        paddingBottom: 0,
         backgroundColor: GlobalStyles.colors.primary700
     },
     infoText: {
         color: 'white',
         fontSize: 16,
         textAlign: 'center',
-        marginTop:32,
+        marginTop: 32,
     }
 });

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useContext, useState } from 'react';
+import { firebase } from '../config';
 
 const BACKEND_URL = 'https://expensetracker-1668a-default-rtdb.firebaseio.com'
 
