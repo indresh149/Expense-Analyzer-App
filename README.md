@@ -4,7 +4,7 @@
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
 alt="Get it on Google Play"
-height="80">](https://play.google.com/store/apps/details?id=com.suc.toe.toe_tack_tick&pli=1)
+height="80">](https://play.google.com/store/apps/details?id=com.indresh149.expensetracker)
 
 
 ![image](https://github.com/indresh149/Expense-Analyzer-App/assets/76736055/fb16702e-722e-4af9-b266-2114b16cadfb)
