@@ -4,8 +4,17 @@ import Lottie from 'lottie-react-native'
 import { GlobalStyles } from '../../constants/styles';
 import ExpensesList from './ExpensesList';
 import ExpensesSummary from './ExpensesSummary';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
+const adUnitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
 
+import  { AdsConsentInterface } from "react-native-google-mobile-ads";
+
+let AdsConsent= undefined;
+
+if (isExpoGo) {
+    AdsConsent = require("react-native-google-mobile-ads").AdsConsent;
+}
 
 function ExpensesOutput({ expenses, expensesPeriod, fallbackText }) {
     let content = <Text style={styles.infoText}>{fallbackText}</Text>;
@@ -18,6 +27,10 @@ function ExpensesOutput({ expenses, expensesPeriod, fallbackText }) {
     const animationRef = useRef();
     return (
         <View style={styles.container}>
+        <BannerAd
+      unitId={adUnitId}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+    />
             <ExpensesSummary expenses={expenses} periodName={expensesPeriod} />
             {content}
             <Lottie style={[styles.logo, { height: height * 0.3, marginLeft: 20 }]}
